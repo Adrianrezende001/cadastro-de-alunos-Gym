@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Alunos</h1>
+        <form id="cadastroForm">
+            <label for="genero">Gênero:</label>
+            <select id="genero" required>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+            </select>
+            
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" required>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" required>
+
+            <label for="altura">Altura (cm):</label>
+            <input type="number" id="altura" required>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <!-- Lista de alunos cadastrados -->
+    <div class="container">
+        <div id="imcResult">
+            <h2>Resultado do IMC</h2>
+            <p id="imcDescription"></p>
+            <img id="imcImage" src="" alt="IMC Image">
+        </div>
+    </div>
+
+    <!-- Lista de alunos cadastrados -->
+    <div class="container">
+        <div id="alunosCadastrados">
+            <h2>Alunos Cadastrados</h2>
+            <ul id="listaAlunos">
+                <!-- Aqui serão listados os alunos cadastrados -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obter os valores dos campos
+            var genero = document.getElementById("genero").value;
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var peso = parseFloat(document.getElementById("peso").value);
+            var idade = parseInt(document.getElementById("idade").value);
+            var altura = parseFloat(document.getElementById("altura").value) / 100;
+
+            // Calcular o IMC
+            var imc = peso / (altura * altura);
+
+            // Exibir o resultado do IMC
+            var imcResult = document.getElementById("imcResult");
+            var imcDescription = document.getElementById("imcDescription");
+            var imcImage = document.getElementById("imcImage");
+
+            imcResult.style.display = "block"; // Mostrar o resultado do IMC
+
+            if (imc >= 40.0) {
+                imcDescription.innerHTML = "Obesidade grau III - Aqui o sinal é vermelho, com forte probabilidade de já existirem doenças muito graves associadas. O tratamento deve ser ainda mais urgente.";
+                imcImage.src = "https://www.plasticadosonho.com.br/wp-content/uploads/2017/12/blog-06-como-calcular-o-imc.jpg";
+            } else if (imc >= 35.0 && imc <= 39.9) {
+                imcDescription.innerHTML = "Obesidade grau II - Mesmo que seus exames aparentem estar normais, é hora de se cuidar, iniciando mudanças no estilo de vida com o acompanhamento próximo de profissionais de saúde.";
+                imcImage.src = "https://www.plasticadosonho.com.br/wp-content/uploads/2017/12/blog-06-como-calcular-o-imc.jpg";
+            } else if (imc >= 30.0 && imc <= 34.9) {
+                imcDescription.innerHTML = "Obesidade grau I - Sinal de alerta! Chegou na hora de se cuidar, mesmo que seus exames sejam normais. Vamos dar início a mudanças hoje! Cuide de sua alimentação. Você precisa iniciar um acompanhamento com nutricionista e/ou endocrinologista.";
+                imcImage.src = "https://www.plasticadosonho.com.br/wp-content/uploads/2017/12/blog-06-como-calcular-o-imc.jpg";
+            } else if (imc >= 25.0 && imc <= 29.9) {
+                imcDescription.innerHTML = "Sobrepeso - Ele é, na verdade, uma pré-obesidade e muitas pessoas nessa faixa já apresentam doenças associadas, como diabetes e hipertensão. Importante rever hábitos e buscar ajuda antes de, por uma série de fatores, entrar na faixa da obesidade pra valer.";
+                imcImage.src = "https://www.plasticadosonho.com.br/wp-content/uploads/2017/12/blog-06-como-calcular-o-imc.jpg";
+            } else if (imc >= 18.6 && imc <= 24.9) {
+                imcDescription.innerHTML = "Normal - Que bom que você está com o peso normal! E o melhor jeito de continuar assim é mantendo um estilo de vida ativo e uma alimentação equilibrada.";
+                imcImage.src = "https://www.plasticadosonho.com.br/wp-content/uploads/2017/12/blog-06-como-calcular-o-imc.jpg";
+            } else {
+                imcDescription.innerHTML = "Abaixo do normal - Procure um médico. Algumas pessoas têm um baixo peso por características do seu organismo e tudo bem. Outras podem estar enfrentando problemas, como a desnutrição. É preciso saber qual é o caso.";
+                imcImage.src = "https://www.plasticadosonho.com.br/wp-content/uploads/2017/12/blog-06-como-calcular-o-imc.jpg";
+            }
+
+            // Adicionar o aluno à lista de alunos cadastrados
+            var listaAlunos = document.getElementById("listaAlunos");
+            var novoAluno = document.createElement("li");
+            novoAluno.innerHTML = "Gênero: " + genero + "<br>Nome: " + nome + "<br>Email: " + email + "<br>Idade: " + idade + " anos<br>Peso: " + peso + " kg<br>IMC: " + imc.toFixed(2) + (imc > 24.9 ? " - <span style='color: red;'>Atenção: Acima do peso</span>" : "");
+            listaAlunos.appendChild(novoAluno);
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* Estilos para a página de cadastro */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #666262, #f0eff1);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#imcResult {
+    display: none; /* Esconder o resultado do IMC inicialmente */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#imcDescription {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#imcImage {
+    max-width: 100%;
+    height: auto;
+}    
+/* Estilizando o campo de seleção de gênero */
+#genero {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #030303;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #030303;
+}
+
+#genero:focus {
+    border-color: #070707;
+}
+
+h1 {
+    color: #080808;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: left;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #050505;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #030303;
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #070707;
+}
+
+#imcResult {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #050505;
+}
+
+/* Estilos para a lista de alunos cadastrados */
+#alunosCadastrados {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#listaAlunos {
+    list-style: none;
+    padding: 0;
+}
+
+#listaAlunos li {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
